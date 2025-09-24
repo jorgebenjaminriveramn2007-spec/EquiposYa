@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EQUIPOSYA - Renta de Equipos Pesados</title>
+  <meta name="description" content="Renta de equipos de construcción: excavadoras, grúas, retroexcavadoras, compactadoras, mezcladoras, generadores y más.">
+  <meta name="keywords" content="renta de equipos, maquinaria pesada, construcción, excavadora, grúa, retroexcavadora, compactadora, mezcladora, generador, soldadora, compresor, cortadora">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { line-height: 1.6; background-color: #f2ebe4; color: #000; }
+
+    /* HEADER */
+    header { background: #1d1d1d; color: #fff; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1000; }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 50px; margin-right: 10px; }
+    nav ul { display: flex; list-style: none; }
+    nav ul li { margin: 0 15px; }
+    nav ul li a { color: #fff; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+    nav ul li a:hover { color: #fca311; }
+    .carrito-icon { font-size: 1.5rem; cursor: pointer; color: #fff; position: relative; }
+    .carrito-icon span { position: absolute; top: -8px; right: -10px; background: #fca311; color: #000; font-size: 0.8rem; padding: 2px 6px; border-radius: 50%; }
+
+    /* HERO */
+    .hero { 
+      background: linear-gradient(90deg, #fca311, #e63946); 
+      color: #fff; 
+      text-align: left; 
+      padding: 6rem 2rem; 
+      border-radius: 10px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .hero h2 { font-size: 3rem; margin-bottom: 1rem; }
+    .hero h3 { font-size: 1.2rem; margin-bottom: 1.5rem; }
+    .btn { 
+      display: inline-block; 
+      background: #e63946; 
+      color: #fff; 
+      padding: 1rem 2rem; 
+      border-radius: 8px; 
+      text-decoration: none; 
+      font-weight: bold; 
+      font-size: 1.1rem; 
+      transition: all 0.3s; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+    }
+    .btn:hover { background: #c1121f; transform: scale(1.05); }
+
+    /* SECCIONES */
+    section { padding: 3rem 2rem; max-width: 1200px; margin: auto; }
+    .equipos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .equipo { 
+      background: #fff; 
+      padding: 1rem; 
+      border-radius: 10px; 
+      text-align: center; 
+      transition: transform 0.3s, box-shadow 0.3s; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    }
+    .equipo:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
+    .equipo img { max-width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; border-radius: 8px; }
+    .equipo h3 { margin-bottom: 0.5rem; color: #1d1d1d; }
+    .precio { font-weight: bold; color: #e63946; margin-bottom: 1rem; }
+
+    /* FOOTER */
+    footer { background: #1d1d1d; color: #fff; text-align: center; padding: 1.5rem 0; }
+    footer a { color: #fca311; margin: 0 10px; font-size: 1.5rem; transition: color 0.3s; }
+    footer a:hover { color: #e63946; }
+
+    /* MODAL CARRITO */
+    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); }
+    .modal-content { background: #fff; margin: 10% auto; padding: 20px; border-radius: 10px; width: 90%; max-width: 600px; }
+    .close { float: right; font-size: 1.5rem; cursor: pointer; color: #e63946; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="C:\Users\jorge.TOMATITO\Desktop\Nueva carpeta\Modern Emblem Logo for EquiposYa.png" alt="Logo EQUIPOSYA">
+      <h1>EQUIPOSYA</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="carrito-icon" onclick="abrirCarrito()">
+      <i class="fas fa-shopping-cart"></i><span id="contador">0</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div>
+      <h2>Renta de Equipos Pesados</h2>
+      <h3>Encuentra la maquinaria que necesitas para tus proyectos.</h3>
+      <a href="#catalogo" class="btn">Ver Catálogo</a>
+    </div>
+  </section>
+
+  <!-- CATALOGO -->
+  <section id="catalogo">
+    <h2>Catálogo de Equipos</h2>
+    <div class="equipos">
+      <!-- Los productos que te agregué -->
+      <div class="equipo"><img src="https://www.aromsamaquinaria.com/wp-content/uploads/2018/03/Maquina-3_1_FINAL.jpg" alt="Excavadora"><h3>Excavadora</h3><p class="precio">$500/día</p><button class="btn" onclick="agregarCarrito('Excavadora',500)">Agregar</button></div>
+      <div class="equipo"><img src="https://www.rentadegruasmangrove.com/wp-content/uploads/2020/09/renta-de-grua-todo-terreno-01.jpg" alt="Grúa"><h3>Grúa</h3><p class="precio">$600/día</p><button class="btn" onclick="agregarCarrito('Grúa',600)">Agregar</button></div>
+      <div class="equipo"><img src="https://tse1.mm.bing.net/th/id/OIP.1JohmLp16RbDF0EHRzkjFwHaE5" alt="Retroexcavadora"><h3>Retroexcavadora</h3><p class="precio">$450/día</p><button class="btn" onclick="agregarCarrito('Retroexcavadora',450)">Agregar</button></div>
+      <div class="equipo"><img src="https://tse4.mm.bing.net/th/id/OIP.SC2nI6hvdXxSFGcqcrP1_AHaHa" alt="Compactadora"><h3>Compactadora</h3><p class="precio">$400/día</p><button class="btn" onclick="agregarCarrito('Compactadora',400)">Agregar</button></div>
+      <div class="equipo"><img src="https://mundodotaciones.com/wp-content/uploads/2024/07/Captura-de-pantalla-2024-07-09-093603.png" alt="Mezcladora de concreto"><h3>Mezcladora de Concreto</h3><p class="precio">$250/día</p><button class="btn" onclick="agregarCarrito('Mezcladora de Concreto',250)">Agregar</button></div>
+      <div class="equipo"><img src="https://tse4.mm.bing.net/th/id/OIP.4nexykopi3WO_gj1mzvtTAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Compresor de aire"><h3>Compresor de Aire</h3><p class="precio">$300/día</p><button class="btn" onclick="agregarCarrito('Compresor de Aire',300)">Agregar</button></div>
+      <div class="equipo"><img src="https://images.booqable.com/w500/uploads/916561ebe40c42078c847cb51c934e80/photo/photo/26f3c0b7-73bc-427b-b3b8-5a4df476794c/1715619826-774391744831952-0196-8889/2296776.jpg" alt="Andamios"><h3>Andamios</h3><p class="precio">$200/día</p><button class="btn" onclick="agregarCarrito('Andamios',200)">Agregar</button></div>
+      <div class="equipo"><img src="https://th.bing.com/th/id/R.b5e93f270180c806ae80a625e26ab344?rik=T7Rn0JMQTtUNdA&pid=ImgRaw&r=0" alt="Generador eléctrico"><h3>Generador Eléctrico</h3><p class="precio">$350/día</p><button class="btn" onclick="agregarCarrito('Generador Eléctrico',350)">Agregar</button></div>
+      <div class="equipo"><img src="https://tse2.mm.bing.net/th/id/OIP.dt5gpEfsumzDd9g_mxXzngHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Cortadora de concreto"><h3>Cortadora de Concreto</h3><p class="precio">$280/día</p><button class="btn" onclick="agregarCarrito('Cortadora de Concreto',280)">Agregar</button></div>
+      <div class="equipo"><img src="https://product-hub-prd.madeiramadeira.com.br/1094181/images/7ffb71f2-2cf3-4064-8f35-c65eaf63a56dmaquinadesoldainversoraeletrodos5mmsempararstararcsmarter220vsku6026v10402871.jpg" alt="Soldadora"><h3>Soldadora</h3><p class="precio">$220/día</p><button class="btn" onclick="agregarCarrito('Soldadora',220)">Agregar</button></div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <h2>Servicios</h2>
+    <p>Ofrecemos asesoría, entrega a domicilio, mantenimiento y soporte técnico para que tu experiencia sea completa y sin preocupaciones.</p>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contacto">
+    <h2>Contacto</h2>
+    <form onsubmit="enviarFormulario(event)">
+      <input type="text" placeholder="Nombre" required>
+      <input type="email" placeholder="Correo" required>
+      <textarea rows="5" placeholder="Mensaje" required></textarea>
+      <button type="submit" class="btn">Enviar</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 EQUIPOSYA. Todos los derechos reservados.</p>
+    <p>
+      <a href="https://www.facebook.com" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </p>
+  </footer>
+
+  <!-- MODAL CARRITO -->
+  <div id="carritoModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarCarrito()">&times;</span>
+      <h2>Carrito</h2>
+      <ul id="listaCarrito"></ul>
+      <p><strong>Total: $<span id="total">0</span></strong></p>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    let carrito = [];
+    let total = 0;
+
+    function agregarCarrito(nombre, precio) {
+      carrito.push({nombre, precio});
+      total += precio;
+      document.getElementById("contador").innerText = carrito.length;
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      let lista = document.getElementById("listaCarrito");
+      lista.innerHTML = "";
+      carrito.forEach(item => {
+        let li = document.createElement("li");
+        li.innerText = item.nombre + " - $" + item.precio;
+        lista.appendChild(li);
+      });
+      document.getElementById("total").innerText = total;
+    }
+
+    function abrirCarrito() {
+      document.getElementById("carritoModal").style.display = "block";
+    }
+
+    function cerrarCarrito() {
+      document.getElementById("carritoModal").style.display = "none";
+    }
+
+    function enviarFormulario(event) {
+      event.preventDefault();
+      alert("Gracias por contactarnos, te responderemos pronto.");
+    }
+  </script>
+</body>
+</html>
+
